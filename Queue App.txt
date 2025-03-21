@@ -1,0 +1,41 @@
+package my_project;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class MyClass {
+    static Scanner userinput = new Scanner(System.in);
+    public static void main(String[] args) {
+
+    	Queue<String> line1 = new LinkedList<>();
+    	Queue<String> line2 = new LinkedList<>();
+    	
+    	char let = 'A';
+    	int time = 0;
+    	int line1Random = 0;
+    	int line2Random = 0;
+    	
+    	String person = "" + let + let + let;
+    	line1.add(person);
+    	line2.add(person);
+    	
+    	int randomConstant = 5;
+    	double threshold = 0.25;
+    	
+    	while (time < 40)
+    	{
+    		line1Random = (int)Math.round(Math.random() * randomConstant / (line1.size() + 0.1));
+    		line2Random = (int)Math.round(Math.random() * randomConstant / (line2.size() + 0.1));
+    		if (line1Random > threshold) {let++; person = "" + let + let + let; line1.add(person);} else {line1.poll();}
+    		if (line2Random > threshold) {let++; person = "" + let + let + let; line2.add(person);} else {line2.poll();}
+    		
+    		System.out.println("Time " + time + ":");
+    		System.out.println("Queue 1 " + line1);
+    		System.out.println("Queue 2 " + line2);
+    		System.out.println("");
+    		time ++;
+    		
+    	}
+		
+	}
+}
